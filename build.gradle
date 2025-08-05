@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.library'
+//    id 'com.github.dcendents.android-maven'
+}
+
+android {
+    compileSdk 34
+    defaultConfig {
+        minSdkVersion 21
+        versionCode 1
+        versionName "1.1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+//    dataBinding {
+//        enabled true
+//    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+//    repositories {
+//        flatDir {
+//        dirs 'libs'
+//        }
+//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+    //rxjava
+    api 'io.reactivex.rxjava2:rxjava:2.2.3'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    //network
+    api 'com.squareup.okhttp3:okhttp:3.14.9'
+    api 'com.squareup.okhttp3:logging-interceptor:3.14.9'
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    //json解析
+    api 'com.google.code.gson:gson:2.10.1'
+    //glide图片加载库
+    api ('com.github.bumptech.glide:glide:4.11.0'){
+        exclude group: 'androidx.fragment',module:'fragment'
+    }
+    api 'io.github.cymchad:BaseRecyclerViewAdapterHelper:3.0.14'
+    //mmkv
+    api 'com.tencent:mmkv:1.3.0'
+    //Android 工具类库
+    api ('io.github.afkt:DevAppX:2.4.2')
+    //support
+    api 'androidx.constraintlayout:constraintlayout:2.1.4'
+    api 'androidx.appcompat:appcompat:1.5.1'
+    api 'androidx.recyclerview:recyclerview:1.3.0'
+    //rx管理View的生命周期
+    api('com.trello.rxlifecycle4:rxlifecycle:4.0.2') {
+        exclude group: 'androidx.fragment',module:'fragment'
+    }
+    api('com.trello.rxlifecycle4:rxlifecycle-components:4.0.2') {
+        exclude group: 'androidx.fragment',module:'fragment'
+    }
+    //rxbinding
+    api('com.jakewharton.rxbinding3:rxbinding:3.1.0') {
+        exclude group: 'androidx.fragment',module:'fragment'
+    }
+    //rx权限请求
+    api('com.github.tbruyelle:rxpermissions:v0.11') {
+        exclude group: 'androidx.fragment',module:'fragment'
+    }
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //Google LiveData和ViewModel组件
+    api 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
+    api 'androidx.lifecycle:lifecycle-livedata:2.5.1'
+    api 'androidx.lifecycle:lifecycle-runtime:2.5.1'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.5.1'
+    api ('com.alibaba:arouter-api:1.5.2'){
+        exclude group: 'androidx.fragment',module:'fragment'
+    }
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "androidx.fragment:fragment:1.3.6"
+        force 'com.squareup.retrofit2:retrofit:2.9.0'
+    }
+}
+
