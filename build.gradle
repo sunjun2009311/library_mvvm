@@ -7,6 +7,8 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.0.4'
         // 使用兼容的 android-maven 插件版本
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+        // 添加 Kotlin 插件以解决 Kotlin 兼容性问题
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21'
     }
 }
 
@@ -19,6 +21,8 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
+// 应用 Kotlin 插件
+apply plugin: 'kotlin-android'
 // 移除不兼容的 android-maven 插件
 apply plugin: 'maven-publish'
 
@@ -33,7 +37,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
-        versionName "1.1.10"
+        versionName "1.1.12"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -62,6 +66,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    
+    // 添加 Kotlin 兼容性配置
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 // 配置 publishing
@@ -70,7 +79,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'lib.mvvm'
             artifactId = 'mvvmhabit'
-            version = '1.1.10'
+            version = '1.1.12'
 
             afterEvaluate {
                 from components.release
@@ -132,6 +141,9 @@ dependencies {
     api ('com.alibaba:arouter-api:1.5.2'){
         exclude group: 'androidx.fragment',module:'fragment'
     }
+    
+    // 添加 Kotlin 标准库
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
 }
 
 configurations.all {
