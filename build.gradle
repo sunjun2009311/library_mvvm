@@ -37,7 +37,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
-        versionName "1.1.12"
+        versionName "1.1.13"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -70,6 +70,11 @@ android {
     // 添加 Kotlin 兼容性配置
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    
+    // 添加 AAPT2 配置以解决资源验证问题
+    aaptOptions {
+        noCompress "tflite"
     }
 }
 
