@@ -3,6 +3,3 @@ jdk:
 
 gradle:
   - 7.2
-
-before_install:
-  - ./gradlew clean
