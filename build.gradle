@@ -43,7 +43,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 10
-        versionName "v1.1.4"
+        versionName "v1.1.5"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -121,7 +121,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'jan.library.mvvm'
             artifactId = 'mvvmhabit'
-            version = 'v1.1.4'
+            version = 'v1.1.5'
 
             afterEvaluate {
                 from components.release
