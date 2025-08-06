@@ -62,11 +62,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    
-    // 添加 Kotlin 兼容性配置
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
 
 // 配置 publishing
