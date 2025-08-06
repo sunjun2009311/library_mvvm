@@ -45,7 +45,17 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    // 添加发布配置
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "mvvmhabit-${variant.name}-${versionName}.aar"
+        }
+    }
 }
+
+// 添加发布配置
+group = 'lib.mvvm'
+version = '1.1.0'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -100,7 +110,6 @@ dependencies {
     api ('com.alibaba:arouter-api:1.5.2'){
         exclude group: 'androidx.fragment',module:'fragment'
     }
-
 }
 
 configurations.all {
@@ -109,4 +118,3 @@ configurations.all {
         force 'com.squareup.retrofit2:retrofit:2.9.0'
     }
 }
-
