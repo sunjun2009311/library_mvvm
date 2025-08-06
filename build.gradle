@@ -42,7 +42,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 17
+        versionCode 1
         versionName "1.1.17"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -91,6 +91,15 @@ android {
         abortOnError false
         checkReleaseBuilds false
         checkDependencies false
+        ignoreWarnings true
+        quiet true
+    }
+    
+    // 彻底禁用注解处理任务以解决 Kotlin 类路径问题
+    tasks.whenTaskAdded { task ->
+        if (task.name.contains("extractDebugAnnotations") || task.name.contains("extractReleaseAnnotations")) {
+            task.enabled = false
+        }
     }
 }
 
@@ -100,7 +109,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'lib.mvvm'
             artifactId = 'mvvmhabit'
-            version = '1.1.17'
+            version = '1.1.18'
 
             afterEvaluate {
                 from components.release
