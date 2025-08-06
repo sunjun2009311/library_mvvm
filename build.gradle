@@ -42,8 +42,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 1
-        versionName "1.1.15"
+        versionCode 17
+        versionName "1.1.17"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -66,6 +66,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+        }
     }
 
     compileOptions {
@@ -87,6 +90,7 @@ android {
     lintOptions {
         abortOnError false
         checkReleaseBuilds false
+        checkDependencies false
     }
 }
 
@@ -96,7 +100,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'lib.mvvm'
             artifactId = 'mvvmhabit'
-            version = '1.1.14'
+            version = '1.1.17'
 
             afterEvaluate {
                 from components.release
