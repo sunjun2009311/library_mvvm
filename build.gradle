@@ -1,7 +1,9 @@
 plugins {
-    id 'com.android.library'
-    id 'com.github.dcendents.android-maven'
+    id 'com.android.library' version '7.0.4'
+    id 'com.github.dcendents.android-maven' version '2.1'
 }
+
+group='com.github.sunjun2009311'
 
 android {
     compileSdk 34
