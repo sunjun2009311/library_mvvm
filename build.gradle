@@ -33,7 +33,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 // 修复 group 配置
-group = 'com.github.sunjun2009311'
+group = 'jan.library.mvvm'
 
 android {
     // 明确指定 compileSdkVersion
@@ -43,7 +43,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
-        versionName "1.1.19"
+        versionName "1.1.0"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
