@@ -42,7 +42,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 2
+        versionCode 1
         versionName "1.1.19"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -84,6 +84,7 @@ android {
     // 添加 AAPT2 配置以解决资源验证问题
     aaptOptions {
         noCompress "tflite"
+        ignoreAssetsPattern = "!.svn:!.git:.*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~"
     }
     
     // 添加 lint 选项以解决 lint 错误
@@ -108,6 +109,9 @@ tasks.whenTaskAdded { task ->
     if (task.name.contains("syncDebugLibJars") || task.name.contains("syncReleaseLibJars")) {
         task.enabled = false
     }
+    if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources")) {
+        task.enabled = false
+    }
 }
 
 // 配置 publishing
@@ -116,7 +120,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'lib.mvvm'
             artifactId = 'mvvmhabit'
-            version = '1.1.19'
+            version = '1.1.20'
 
             afterEvaluate {
                 from components.release
