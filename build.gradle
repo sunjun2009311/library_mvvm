@@ -106,13 +106,13 @@ android {
 }
 
 // 禁用不需要的任务以解决构建问题
-tasks.whenTaskAdded { task ->
-    if (task.name.contains("syncDebugLibJars") || task.name.contains("syncReleaseLibJars")) {
+tasks.whenTaskAdded { task -> 
+    // 只禁用确实导致构建问题的任务
+    if (task.name.contains("extractDebugAnnotations") || task.name.contains("extractReleaseAnnotations") ||
+        task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources")) {
         task.enabled = false
     }
-    if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources")) {
-        task.enabled = false
-    }
+    // 重新启用syncLibJars任务，因为它们对生成classes.jar是必要的
 }
 
 // 配置 publishing
@@ -121,7 +121,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'jan.library.mvvm'
             artifactId = 'mvvmhabit'
-            version = 'v1.1.0'
+            version = 'v1.1.2'
 
             afterEvaluate {
                 from components.release
