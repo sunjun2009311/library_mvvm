@@ -1,6 +1,17 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+
 plugins {
-    id 'com.android.library' version '7.0.4'
-    id 'com.github.dcendents.android-maven' version '2.1'
+    id 'com.android.library'
+    id 'com.github.dcendents.android-maven'
     id 'maven-publish'
 }
 
