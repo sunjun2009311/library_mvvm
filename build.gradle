@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library' version '7.0.4'
     id 'com.github.dcendents.android-maven' version '2.1'
+    id 'maven-publish'
 }
 
 group='com.github.sunjun2009311'
@@ -53,11 +54,34 @@ android {
             outputFileName = "mvvmhabit-${variant.name}-${versionName}.aar"
         }
     }
+
+    // 添加 publishing 配置
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 // 添加发布配置
 group = 'lib.mvvm'
 version = '1.1.0'
+
+// 配置 publishing
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'lib.mvvm'
+            artifactId = 'mvvmhabit'
+            version = '1.1.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
