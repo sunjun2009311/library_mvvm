@@ -25,7 +25,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
-        versionName "1.1.4"
+        versionName "1.1.5"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -61,14 +61,6 @@ android {
             outputFileName = "mvvmhabit-${variant.name}-${versionName}.aar"
         }
     }
-
-    // 添加 publishing 配置
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 }
 
 // 配置 publishing
@@ -77,7 +69,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'lib.mvvm'
             artifactId = 'mvvmhabit'
-            version = '1.1.4'
+            version = '1.1.5'
 
             afterEvaluate {
                 from components.release
