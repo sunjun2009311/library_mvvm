@@ -7,16 +7,22 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.0.4'
         // 使用兼容的 android-maven 插件版本
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
-        // 添加 Kotlin 插件以解决 Kotlin 兼容性问题
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21'
+        // 更新 Kotlin 插件版本以解决 Kotlin 兼容性问题
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
     }
 }
 
 allprojects {
     repositories {
+        //添加最新的阿里云镜像
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://jitpack.io' }
+        maven {url 'https://developer.huawei.com/repo/'}
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -37,7 +43,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
-        versionName "1.1.13"
+        versionName "1.1.15"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -84,7 +90,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'lib.mvvm'
             artifactId = 'mvvmhabit'
-            version = '1.1.12'
+            version = '1.1.14'
 
             afterEvaluate {
                 from components.release
@@ -147,8 +153,8 @@ dependencies {
         exclude group: 'androidx.fragment',module:'fragment'
     }
     
-    // 添加 Kotlin 标准库
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
+    // 更新 Kotlin 标准库版本以解决兼容性问题
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
 }
 
 configurations.all {
