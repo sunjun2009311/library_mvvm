@@ -111,7 +111,7 @@ tasks.whenTaskAdded { task ->
     if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources")) {
         task.enabled = false
     }
-    // 重新启用extractAnnotations和syncLibJars任务，因为它们对生成classes.jar是必要的
+    // 保持extractAnnotations任务启用，因为它们是syncLibJars任务所必需的
 }
 
 // 配置 publishing
