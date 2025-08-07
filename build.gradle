@@ -40,7 +40,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         // 使用 gradle.properties 中定义的 VERSION_NAME 属性
-        versionCode 18
+        versionCode 19
         versionName project.property('VERSION_NAME')
         javaCompileOptions {
             annotationProcessorOptions {
@@ -67,14 +67,6 @@ android {
         }
         debug {
             minifyEnabled false
-            // 配置lint选项以避免extractAnnotations任务失败
-            lintOptions {
-                abortOnError false
-                checkReleaseBuilds false
-                checkDependencies false
-                ignoreWarnings true
-                quiet true
-            }
         }
     }
 
@@ -114,7 +106,8 @@ android {
 // 禁用不需要的任务以解决构建问题
 tasks.whenTaskAdded { task -> 
     // 只禁用确实导致构建问题的任务
-    if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources")) {
+    if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources") ||
+        task.name.contains("extractDebugAnnotations") || task.name.contains("extractReleaseAnnotations")) {
         task.enabled = false
     }
 }
