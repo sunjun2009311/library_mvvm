@@ -5,8 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
-        // 使用兼容的 android-maven 插件版本
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+        // 移除不兼容的 android-maven 插件版本，使用JitPack内置支持
         // 更新 Kotlin 插件版本以解决 Kotlin 兼容性问题
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
     }
@@ -29,8 +28,7 @@ allprojects {
 apply plugin: 'com.android.library'
 // 应用 Kotlin 插件
 apply plugin: 'kotlin-android'
-// 应用 android-maven 插件以支持 JitPack 构建
-apply plugin: 'com.github.dcendents.android-maven'
+// 移除 android-maven 插件，使用JitPack内置支持
 apply plugin: 'maven-publish'
 
 // 使用 gradle.properties 中定义的 GROUP 属性
@@ -44,7 +42,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         // 使用 gradle.properties 中定义的 VERSION_NAME 属性
-        versionCode 11
+        versionCode 12
         versionName project.property('VERSION_NAME')
         javaCompileOptions {
             annotationProcessorOptions {
