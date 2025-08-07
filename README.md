@@ -34,7 +34,7 @@ allprojects {
 ```gradle
 dependencies {
     // 当前最新版本
-    implementation 'com.github.sunjun2009311:library_mvvm:v1.1.11'
+    implementation 'com.github.sunjun2009311:library_mvvm:v1.1.12'
 }
 ```
 
@@ -55,6 +55,10 @@ public class App extends BaseApplication {
 详细的使用文档请参考 [Wiki](https://github.com/sunjun2009311/library_mvvm/wiki)
 
 ## 版本更新日志
+
+### v1.1.12
+- 修复extractAnnotations任务导致的构建问题
+- 优化构建配置
 
 ### v1.1.11
 - 修复Kotlin版本兼容性问题

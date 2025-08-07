@@ -106,10 +106,10 @@ android {
 // 禁用不需要的任务以解决构建问题
 tasks.whenTaskAdded { task -> 
     // 只禁用确实导致构建问题的任务
-    if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources")) {
+    if (task.name.contains("verifyDebugResources") || task.name.contains("verifyReleaseResources") || 
+        task.name.contains("extractDebugAnnotations") || task.name.contains("extractReleaseAnnotations")) {
         task.enabled = false
     }
-    // 保持extractAnnotations任务启用，因为它们是syncLibJars任务所必需的
 }
 
 // 配置 publishing
