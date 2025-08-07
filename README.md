@@ -34,7 +34,7 @@ allprojects {
 ```gradle
 dependencies {
     // 当前最新版本
-    implementation 'com.github.sunjun2009311:library_mvvm:v1.1.19'
+    implementation 'com.github.sunjun2009311:library_mvvm:v1.1.22'
 }
 ```
 
@@ -55,6 +55,17 @@ public class App extends BaseApplication {
 详细的使用文档请参考 [Wiki](https://github.com/sunjun2009311/library_mvvm/wiki)
 
 ## 版本更新日志
+
+### v1.1.22
+- 修复Gradle版本兼容性问题
+- 优化构建配置以提高构建稳定性
+- 修复资源引用问题
+- 修复AAR打包问题，确保classes.jar正确包含
+- 优化资源处理流程
+- 修复构建过程中的资源链接错误
+- 修复依赖库解析问题
+- 优化构建任务配置
+- 提升构建性能
 
 ### v1.1.19
 - 完全禁用extractAnnotations任务以解决构建问题
@@ -130,4 +141,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
