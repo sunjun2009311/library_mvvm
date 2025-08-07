@@ -29,11 +29,12 @@ allprojects {
 apply plugin: 'com.android.library'
 // 应用 Kotlin 插件
 apply plugin: 'kotlin-android'
-// 移除不兼容的 android-maven 插件
+// 应用 android-maven 插件以支持 JitPack 构建
+apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'maven-publish'
 
-// 修复 group 配置
-group = 'jan.library.mvvm'
+// 使用 gradle.properties 中定义的 GROUP 属性
+group = project.property('GROUP')
 
 android {
     // 明确指定 compileSdkVersion
@@ -42,8 +43,9 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 10
-        versionName "v1.1.7"
+        // 使用 gradle.properties 中定义的 VERSION_NAME 属性
+        versionCode 11
+        versionName project.property('VERSION_NAME')
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.getName()]
@@ -96,6 +98,13 @@ android {
         ignoreWarnings true
         quiet true
     }
+    
+    // 明确指定构件文件名
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "mvvmhabit-${project.property('VERSION_NAME')}.aar"
+        }
+    }
 }
 
 // 禁用不需要的任务以解决构建问题
@@ -111,9 +120,11 @@ tasks.whenTaskAdded { task ->
 publishing {
     publications {
         release(MavenPublication) {
-            groupId = 'jan.library.mvvm'
+            // 使用 gradle.properties 中定义的 GROUP 属性
+            groupId = project.property('GROUP')
             artifactId = 'mvvmhabit'
-            version = 'v1.1.7'
+            // 使用 gradle.properties 中定义的 VERSION_NAME 属性
+            version = project.property('VERSION_NAME')
 
             afterEvaluate {
                 from components.release
