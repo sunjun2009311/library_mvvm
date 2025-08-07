@@ -34,7 +34,7 @@ allprojects {
 ```gradle
 dependencies {
     // 当前最新版本
-    implementation 'com.github.sunjun2009311:library_mvvm:v1.1.13'
+    implementation 'com.github.sunjun2009311:library_mvvm:v1.1.14'
 }
 ```
 
@@ -55,6 +55,10 @@ public class App extends BaseApplication {
 详细的使用文档请参考 [Wiki](https://github.com/sunjun2009311/library_mvvm/wiki)
 
 ## 版本更新日志
+
+### v1.1.14
+- 优化构建配置以提高JitPack构建成功率
+- 添加超时配置避免构建超时
 
 ### v1.1.13
 - 修复syncDebugLibJars任务依赖问题
