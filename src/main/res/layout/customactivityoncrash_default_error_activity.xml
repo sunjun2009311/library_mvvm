@@ -1,55 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="50dp">
+
+    <ImageView
+        android:id="@+id/customactivityoncrash_error_activity_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/customactivityoncrash_error_image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="很抱歉，程序出现异常"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UselessParent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/customactivityoncrash_error_activity_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/customactivityoncrash_activity_vertical_margin"
-            android:paddingLeft="@dimen/customactivityoncrash_activity_horizontal_margin"
-            android:paddingRight="@dimen/customactivityoncrash_activity_horizontal_margin"
-            android:paddingTop="@dimen/customactivityoncrash_activity_vertical_margin">
-
-            <ImageView
-                android:id="@+id/customactivityoncrash_error_activity_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@null"
-                android:src="@drawable/customactivityoncrash_error_image" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/customactivityoncrash_activity_vertical_margin"
-                android:gravity="center"
-                android:text="@string/customactivityoncrash_error_activity_error_occurred_explanation"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/customactivityoncrash_error_activity_restart_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/customactivityoncrash_activity_vertical_margin"
-                android:text="@string/customactivityoncrash_error_activity_close_app" />
-
-            <Button
-                android:id="@+id/customactivityoncrash_error_activity_more_info_button"
-                style="?borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/customactivityoncrash_error_activity_error_details"
-                android:textColor="?colorPrimary" />
-        </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            tools:text="Error message" />
     </ScrollView>
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/customactivityoncrash_error_activity_restart_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="重新启动"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/customactivityoncrash_error_activity_more_info_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="详细信息"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+</LinearLayout>
