@@ -56,6 +56,13 @@ public class App extends BaseApplication {
 
 详细的使用文档请参考 [Wiki](https://github.com/sunjun2009311/library_mvvm/wiki)
 
+> 注意：如果您无法访问 Wiki 页面，也可以直接查看项目中的 [wiki](file:///D:/Workspace/codefield/backupProjects/library_mvvm/wiki) 目录下的文档文件:
+> - [首页](file:///D:/Workspace/codefield/backupProjects/library_mvvm/wiki/Home.md)
+> - [安装指南](file:///D:/Workspace/codefield/backupProjects/library_mvvm/wiki/Installation.md)
+> - [使用指南](file:///D:/Workspace/codefield/backupProjects/library_mvvm/wiki/Usage.md)
+> - [架构说明](file:///D:/Workspace/codefield/backupProjects/library_mvvm/wiki/Architecture.md)
+> - [贡献指南](file:///D:/Workspace/codefield/backupProjects/library_mvvm/wiki/Contributing.md)
+
 ## 项目改进
 
 相比于原始的 [goldze/MVVMHabit](https://github.com/goldze/MVVMHabit) 项目，本项目进行了以下改进：
