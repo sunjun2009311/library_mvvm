@@ -1,5 +1,14 @@
 jdk:
   - openjdk11
 
-gradle:
-  - 7.2
+before_install:
+  - echo "Starting JitPack build for library_mvvm"
+  - java -version
+  - ./gradlew --version
+
+install:
+  - ./gradlew clean build publishToMavenLocal -xtest -xlint --stacktrace --info
+
+env:
+  JAVA_OPTS: "-Xmx2048m"
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs=-Xmx2048m"
