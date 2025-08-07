@@ -6,6 +6,8 @@
 
 MVVMHabit是一个基于Android Architecture Components和MVVM模式的Android开发框架库，旨在提供一套完整的Android开发解决方案。
 
+> 本项目基于 [goldze/MVVMHabit](https://github.com/goldze/MVVMHabit) 开发，在其基础上进行了改进和优化，以适应更广泛的使用场景和解决特定问题。
+
 ## 特性
 
 - 基于MVVM模式的架构设计
@@ -54,6 +56,29 @@ public class App extends BaseApplication {
 
 详细的使用文档请参考 [Wiki](https://github.com/sunjun2009311/library_mvvm/wiki)
 
+## 项目改进
+
+相比于原始的 [goldze/MVVMHabit](https://github.com/goldze/MVVMHabit) 项目，本项目进行了以下改进：
+
+1. **构建系统优化**：
+   - 修复了 Gradle 版本兼容性问题
+   - 优化了构建配置以提高构建稳定性
+   - 解决了 AAR 打包问题，确保 classes.jar 正确包含
+
+2. **资源处理优化**：
+   - 修复了资源引用问题
+   - 优化了资源处理流程
+   - 解决了构建过程中的资源链接错误
+
+3. **依赖管理改进**：
+   - 修复了依赖库解析问题
+   - 优化了构建任务配置
+   - 提升了整体构建性能
+
+4. **版本维护**：
+   - 提供了持续的版本更新和维护
+   - 集成了自动化的构建和发布流程
+
 ## 版本更新日志
 
 ### v1.1.22
@@ -66,7 +91,6 @@ public class App extends BaseApplication {
 - 修复依赖库解析问题
 - 优化构建任务配置
 - 提升构建性能
-
 
 ## 许可证
 
@@ -90,3 +114,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
